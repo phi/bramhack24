@@ -1,13 +1,41 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Map with Reverse Geocoding</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
-    
+   
+   <br>
+   <br>
+    <header>Want A Bicycle?</header>
        <style>
+        /* Full page container with gradient border */
         .page-border {
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 12px;
+            position: relative;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Outer gradient border */
+        .page-border::before {
+            content: '';
+            position: absolute;
+            top: -4px;
+            left: -4px;
+            right: -4px;
+            bottom: -4px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, #4CAF50, #2196F3, #FF9800, #FF5722);
+            z-index: -1;
+        }
+       
+       
+       .page-border {
             width: 90%;
             max-width: 1000px;
             padding: 20px;
