@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Map with Reverse Geocoding</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
+    <style>
+        #map {
+            height: 500px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Click on the Map to Get Address</h1>
+    <div id="map"></div>
+    <p id="address">Selected Address: <span id="location-info">None</span></p>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+
+    <script>
+        // Initialize the map
+        const map = L.map('map').setView([43.7315, -79.7624], 13);  // Center on Brampton Downtown.
+
+        // Add OpenStreetMap tile layer
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        let marker; // Variable to hold the marker
+
+        // Function to handle reverse geocoding
+        function getAddress(lat, lon) {
+            // Use Nominatim's reverse geocoding API
+            fetch(`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json`)
+                .then(response => response.json())
+                .then(data => {
+                    // Get address from the response
+                    const address = data.display_name || "Address not found";
+                    const postalCode = data.address.postcode || "Postal code not found";
+
+                    // Display address and postal code
+                    document.getElementById('location-info').textContent = `${address} (Postal Code: ${postalCode})`;
+
+                    // Add popup with address to the marker
+                    if (marker) {
+                        marker.bindPopup(`Address: ${address}<br>Postal Code: ${postalCode}`).openPopup();
+                    }
+                })
+                .catch(error => {
+                    console.error("Error fetching address:", error);
+                    document.getElementById('location-info').textContent = "Error fetching address";
+                });
+        }
+
+        // Add click event to place marker and get address
+        map.on('click', function (e) {
+            const { lat, lng } = e.latlng;
+
+            // Remove previous marker, if any
+            if (marker) {
+                map.removeLayer(marker);
+            }
+
+            // Add a new marker at the clicked location
+            marker = L.marker([lat, lng]).addTo(map);
+
+            // Call function to get address based on coordinates
+            getAddress(lat, lng);
+        });
+    </script>
+
+</body>
+</html>
