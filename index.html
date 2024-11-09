@@ -8,7 +8,6 @@
    
    <br>
    <br>
-    <header>Want A Bicycle?</header>
        <style>
         /* Full page container with gradient border */
         .page-border {
@@ -53,6 +52,7 @@
         
         /* General styling */
         body {
+            background-color: ;
             font-family: Arial, sans-serif;
             display: flex;
             flex-direction: column;
@@ -106,7 +106,6 @@
         }
 
         #coordinate-form button {
-            background-color: #4CAF50;
             color: white;
             border: none;
             padding: 10px 20px;
@@ -117,6 +116,7 @@
 
         #coordinate-form button:hover {
             background-color: #45a049;
+            max-width: 200px;
         }
 
         #personal-details-form {
@@ -166,7 +166,6 @@
             padding: 12px;
             font-size: 16px;
             border-radius: 4px;
-            background-color: #4CAF50;
             color: white;
             border: none;
             cursor: pointer;
@@ -237,34 +236,6 @@
 <br>
 <br>
 
-
-    <div id="personal-details-form">
-        <li>
-        <label for="age-range">Age Range:</label>
-        <select id="age-range" required>
-            <option value="">Select Age Range</option>
-            <option value="Under 18">Under 18</option>
-            <option value="18-25">18-25</option>
-            <option value="26-35">26-35</option>
-            <option value="36-50">36-50</option>
-            <option value="Over 50">Over 50</option>
-        </select>
-    <ul></ul>
-        <label for="gender">Gender:</label>
-        <select id="gender" required>
-            <option value="">Select Gender</option>
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-            <option value="other">Other</option>
-        </select>
-    </ul>
-    </li>
-    </ul>
-        <button type="button" onclick="displayPersonalInfo()">Submit</button>
-    </div>
-    
-    <div id="result">Your details: <span id="personal-info">None</span></div>
-    
     <script>
         // Function to display personal information
         function displayPersonalInfo() {
@@ -282,8 +253,9 @@
         }
     </script>
     
-    <h1>Click on the Map to Get Address</h1>
-    <div id="map"></div>
+    <h1>Where would a bike share work best for your community?</h1>
+    <div id="map">
+    <p>Please drop a mark on the map</p>
     <p id="address">Selected Address: <span id="location-info">None</span></p>
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
@@ -341,6 +313,37 @@
             getAddress(lat, lng);
         });
     </script>
+
+</div>
+<h4>To help us server you better</h4>
+<div id="personal-details-form">
+    <li>
+    <label for="age-range">Age Range:</label>
+    <select id="age-range" required>
+        <option value="NA">Prefer not to answer</option>
+        <option value="Under 18">Under 18</option>
+        <option value="18-25">18-25</option>
+        <option value="26-35">26-35</option>
+        <option value="36-50">36-50</option>
+        <option value="Over 50">Over 50</option>
+    </select>
+<ul></ul>
+    <label for="gender">Gender:</label>
+    <select id="gender" required>
+        <option value="NA">Prefer not ot answer</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+        <option value="Non-Binary">Non-Binary</option>
+        <option value="other">Other</option>
+    </select>
+</ul>
+</li>
+</ul>
+    <button type="button" onclick="displayPersonalInfo()">Submit</button>
+</div>
+
+<div id="result">Your details: <span id="personal-info">None</span></div>
+
 
 </body>
 </html>
