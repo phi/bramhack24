@@ -1,349 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Map with Reverse Geocoding</title>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
-   
-   <br>
-   <br>
-       <style>
-        /* Full page container with gradient border */
-        .page-border {
-            max-width: 1000px;
-            margin: 20px auto;
-            padding: 20px;
-            background: #fff;
-            border-radius: 12px;
-            position: relative;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
-        }
-
-        /* Outer gradient border */
-        .page-border::before {
-            content: '';
-            position: absolute;
-            top: -4px;
-            left: -4px;
-            right: -4px;
-            bottom: -4px;
-            border-radius: 16px;
-            background: linear-gradient(135deg, #4CAF50, #2196F3, #FF9800, #FF5722);
-            z-index: -1;
-        }
-       
-       
-       .page-border {
-            width: 90%;
-            max-width: 1000px;
-            padding: 20px;
-            border: 5px solid #333;
-            border-radius: 12px;
-            background-color: #fff;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        h1 {
-            color: #333;
-            font-size: 24px;
-            text-align: center;
-        }
-        
-        /* General styling */
-        body {
-            background-color: ;
-            font-family: Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin: 0;
-            padding: 0;
-        }
-        
-        h1 {
-            color: #333;
-            font-size: 24px;
-            margin-top: 20px;
-        }
-
-        /* Map styling */
-        #map {
-            height: 500px;
-            width: 100%;
-            max-width: 800px;
-            margin-top: 20px;
-            border-radius: 8px;
-            border: 1px solid #ddd;
-        }
-
-        /* Form styling */
-        #coordinate-form {
-            margin: 20px 0;
-            padding: 10px;
-            background-color: #f9f9f9;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            width: 100%;
-            max-width: 500px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        #coordinate-form label {
-            font-size: 14px;
-            color: #555;
-            margin-bottom: 5px;
-        }
-
-        #coordinate-form input[type="text"] {
-            width: 100%;
-            padding: 8px;
-            margin-bottom: 10px;
-            border-radius: 4px;
-            border: 1px solid #ccc;
-        }
-
-        #coordinate-form button {
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 14px;
-        }
-
-        #coordinate-form button:hover {
-            background-color: #45a049;
-            max-width: 200px;
-        }
-
-        #personal-details-form {
-            padding: 15px;
-            background-color: #f9f9f9;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            max-width: 500px;
-            margin: 0 auto;
-        }
-
-        #personal-details-form ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        #personal-details-form li {
-            margin-bottom: 15px;
-        }
-
-        #personal-details-form label {
-            font-size: 14px;
-            color: #555;
-            display: block;
-            margin-bottom: 5px;
-        }
-
-        /* Styling for select boxes */
-        select {
-            width: 100%;
-            padding: 10px;
-            font-size: 16px;
-            border-radius: 4px;
-            border: 1px solid #ccc;
-            background-color: #fff;
-            transition: border-color 0.3s ease;
-        }
-
-        select:focus {
-            border-color: #4CAF50;
-            outline: none;
-        }
-
-        /* Custom button styling */
-        button {
-            width: 100%;
-            padding: 12px;
-            font-size: 16px;
-            border-radius: 4px;
-            color: white;
-            border: none;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        button:hover {
-            background-color: #45a049;
-        }
-
-        /* For the gender select, add icons */
-        .gender-select {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 10px;
-            border-radius: 4px;
-            border: 1px solid #ccc;
-            background-color: #fff;
-            font-size: 16px;
-            width: 100%;
-            cursor: pointer;
-        }
-
-        .gender-select .icon {
-            font-size: 24px;
-            color: #555;
-        }
-
-        .gender-select span {
-            margin-left: 10px;
-            color: #555;
-            font-size: 16px;
-        }
-
-        /* Add a little hover effect on the gender icon */
-        .gender-select:hover .icon {
-            color: #4CAF50;
-        }
-
-        #result {
-            font-size: 16px;
-            margin-top: 15px;
-            color: #333;
-            text-align: center;
-        }
-
-    
-        /* Address display styling */
-        #address {
-            font-size: 16px;
-            color: #333;
-            margin-top: 10px;
-        }
-
-        #location-info {
-            font-weight: bold;
-            color: #007BFF;
-        }
-    </style>
-        
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
+    <link rel="stylesheet" href="style.css">
+    <link rel="json" href="particlesjs-config.json">
 </head>
+
 <body>
-<ul>
+    <div class="ilk-arkap" id="home">
+        <div>
+                <div class="wrapper">
+                    <div class="adim">
+                        <h1 style="font-size: 25px;">Hi</h1>
+                        <H1 style="font-size: 38.12px;" >Have you</H1>
+                    </div>
 
-<br>
-<br>
-<br>
-<br>
+                    <div class="Placeholder">
+                        <h1 style="font-size: 50px; ">Ever wanted Brampton to have</h1>
+                    </div>
+                    
+                    <div class="buyuk-yazi"> 
+                        <h1>Bicycles</h1>
+                    </div>
+                </div>
+            
+        </div>
+    </div>
+    <div class="ikinci-arkap">
+        <div >
+            <div class="wrapper2">
+                <h1 style="color: #F8A067; font-family: Poppins;">Where wouch you like to see a bike share in your community </h1>
+                <h2 style="color: #F8A067; font-family: Poppins; font-weight: 400;">Please select a place on the map</h2>
+                <div style="margin: auto;" id="map"></div>
+                <div>
+                    
+                    <input type="number" id="age-range" placeholder="Age" required style="margin-bottom: 50px; margin-top: 50px;">
 
-    <script>
-        // Function to display personal information
-        function displayPersonalInfo() {
-      
-            const ageRange = document.getElementById('age-range').value;
-            const gender = document.getElementById('gender').value;
-    
-            if ( !ageRange || !gender) {
-                document.getElementById('personal-info').textContent = "Please fill in all fields.";
-                return;
-            }
-    
-            // Display the user's personal details
-            document.getElementById('personal-info').textContent = `Gender: ${gender}, Age Range: ${ageRange}`;
-        }
-    </script>
-    
-    <h1>Where would a bike share work best for your community?</h1>
-    <div id="map">
-    <p>Please drop a mark on the map</p>
-    <p id="address">Selected Address: <span id="location-info">None</span></p>
-
+                    <select id="gender" required>
+                        <option value="">Select Gender</option>
+                        <option value="0">Male</option>
+                        <option value="1">Female</option>
+                        <option value="2">Other</option>
+                    </select>
+                </div>
+                <button id="button" type="button" onclick="getInformation()">Submit</button>
+            </div>
+        </div>
+        <p style="text-align: center; font-size: 20px;" id="address">Selected Address: <span id="location-info">None</span></p>
+    </div>
+    <!--Map-->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
-
-    <script>
-        // Initialize the map
-        const map = L.map('map').setView([43.7315, -79.7624], 13);  // Center on Brampton Downtown.
-
-        // Add OpenStreetMap tile layer
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            maxZoom: 19,
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        }).addTo(map);
-
-        let marker; // Variable to hold the marker
-
-        // Function to handle reverse geocoding
-        function getAddress(lat, lon) {
-            // Use Nominatim's reverse geocoding API
-            fetch(`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json`)
-                .then(response => response.json())
-                .then(data => {
-                    // Get address from the response
-                    console.log(data)
-                    const address = data.display_name || "Address not found";
-                    const postalCode = data.address.postcode || "Postal code not found";
-
-                    // Display address and postal code
-                    document.getElementById('location-info').textContent = `${address} (Postal Code: ${postalCode})`;
-
-                    // Add popup with address to the marker
-                    if (marker) {
-                        marker.bindPopup(`Address: ${address}<br>Postal Code: ${postalCode}`).openPopup();
-                    }
-                })
-                .catch(error => {
-                    console.error("Error fetching address:", error);
-                    document.getElementById('location-info').textContent = "Error fetching address";
-                });
-        }
-
-        // Add click event to place marker and get address
-        map.on('click', function (e) {
-            const { lat, lng } = e.latlng;
-
-            // Remove previous marker, if any
-            if (marker) {
-                map.removeLayer(marker);
-            }
-
-            // Add a new marker at the clicked location
-            marker = L.marker([lat, lng]).addTo(map);
-
-            // Call function to get address based on coordinates
-            getAddress(lat, lng);
-        });
-    </script>
-
-</div>
-<h4>To help us server you better</h4>
-<div id="personal-details-form">
-    <li>
-    <label for="age-range">Age Range:</label>
-    <select id="age-range" required>
-        <option value="NA">Prefer not to answer</option>
-        <option value="Under 18">Under 18</option>
-        <option value="18-25">18-25</option>
-        <option value="26-35">26-35</option>
-        <option value="36-50">36-50</option>
-        <option value="Over 50">Over 50</option>
-    </select>
-<ul></ul>
-    <label for="gender">Gender:</label>
-    <select id="gender" required>
-        <option value="NA">Prefer not ot answer</option>
-        <option value="male">Male</option>
-        <option value="female">Female</option>
-        <option value="Non-Binary">Non-Binary</option>
-        <option value="other">Other</option>
-    </select>
-</ul>
-</li>
-</ul>
-    <button type="button" onclick="displayPersonalInfo()">Submit</button>
-</div>
-
-<div id="result">Your details: <span id="personal-info">None</span></div>
-
+    <!--Form Handling-->
+    <script src="script.js"></script>
+    <script src="particles.js"></script>
+    <script src="app.js"></script>
 
 </body>
+
 </html>

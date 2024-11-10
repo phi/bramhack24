@@ -1,0 +1,300 @@
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&display=swap');
+
+* {
+    padding: 0;
+
+}
+
+body{
+    
+    --wepkit-background-size: cover;
+    background-size: cover;
+    background-position: center;
+}
+.page-border {
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 12px;
+    position: relative;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Outer gradient border */
+.page-border::before {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    right: -4px;
+    bottom: -4px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #4CAF50, #2196F3, #FF9800, #FF5722);
+    z-index: -1;
+}
+
+
+.page-border {
+    width: 90%;
+    max-width: 1000px;
+    padding: 20px;
+    border: 5px solid #333;
+    border-radius: 12px;
+    background-color: #fff;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+#map {
+    height: 500px;
+    width: 100%;
+    max-width: 800px;
+    margin-top: 20px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+
+#coordinate-form {
+    margin: 20px 0;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#coordinate-form label {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+#coordinate-form input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+#coordinate-form button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+#coordinate-form button:hover {
+    background-color: #45a049;
+}
+
+#personal-details-form {
+    padding: 15px;
+    border-radius: 8px;
+    max-width: 500px;
+    
+}
+
+#personal-details-form ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#personal-details-form li {
+    margin-bottom: 15px;
+}
+
+#personal-details-form label {
+    font-size: 14px;
+    color: #555;
+    display: block;
+    margin-bottom: 5px;
+}
+
+
+select {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    transition: border-color 0.3s ease;
+}
+
+select:focus {
+    border-color: #4CAF50;
+    outline: none;
+}
+
+
+#button{
+    width: 99.5%;
+    outline: none;
+    border: none;
+    background-color: #F8A067;
+    color: white;
+    padding-top: 10px;
+    padding-bottom: 10Px;
+    font-size: 30px;
+    margin-top: 40px;
+    transition-duration: 0.4s;
+}
+
+#button:hover{
+    cursor:pointer;
+    background-color: #f5863b ;
+}
+
+
+#result {
+    font-size: 16px;
+    margin-top: 15px;
+    color: #333;
+    text-align: center;
+}
+
+
+#address {
+    font-size: 16px;
+    color: #000000;
+    margin-top: 10px;
+    font-family: Poppins;
+}
+
+#location-info {
+    font-weight: bold;
+    color: #f17b2d;
+}
+
+.wrapper {
+    margin: 0 auto;
+   /* padding-top: 10px; BUrda Tepeden boşluk veriyoruz*/
+    width: 750px;
+    height: 53vh;
+    padding: 100px 30px 30px 30px;
+    z-index: 10;
+    position: relative;
+}
+
+::placeholder {
+    color: #a56d47;
+    opacity: 1;
+}
+
+.ilk-arkap{
+    min-height: 87vh;
+    background: -moz-linear-gradient(50deg, #211F2E 0%, #413771 100%);
+    background: -webkit-linear-gradient(50deg, #211F2E 0%, #413771 100%);
+    background: linear-gradient(45deg, #1d1c29 0%, #413771 100%);
+}
+
+.adim{
+    font-family: Poppins;
+    color: #F8A067;
+    line-height: 50px;
+    padding-top: 10px;
+}
+
+.adim h1 {
+    
+    font-weight: 500;
+    margin: 0;
+}
+
+.Placeholder{
+    font-family: "Bodoni Moda";
+    color: #F8A067;
+    text-shadow: -3px 0px white;
+    line-height: 55px;
+    margin-top: 10px;
+}
+
+
+.buyuk-yazi {
+    font-size: 70px;
+    line-height: 50px;
+    font-family: "Bodoni Moda";
+    color: #F8A067;
+    text-shadow: -4.3px 0px white;
+}
+
+.alt-yazi {
+    padding-top: 20px;
+    color: #F8A067;
+    font-family: "Poppins";
+}
+.alt-yazi h3 {
+    font-weight: 300;
+    font-size: 16px;
+}
+
+.alt-sol-bos {
+    width: 75%;
+    margin-top: 20px;
+    float:right;
+    margin-top: 50px;
+    color: #F8A067;
+}
+.alt-sol-bos h3 {
+    float: right;
+    font-family: "Poppins";
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.ikinci-arkap {
+    min-height: 110vh;
+    background-color: #413771
+}
+.wrapper2 {
+    margin: 0 auto;
+    padding: 65px 30px 30px 30px; /* BUrda Tepeden boşluk veriyoruz*/
+    width: 750px;
+    height:110vh;
+    z-index: 10;
+    position: relative;
+}
+
+.wrapper2 input{
+    width: 99.5%;
+    outline: none;
+    border: none;
+    background: none;
+    border-bottom: 2px solid #F8A067;
+    padding-top: 10px;
+    font-size: 23px;
+    font-family: Poppins;
+    color:white
+}
+
+.wrapper2 select {
+    width: 99.5%;
+    outline: none;
+    border: none;
+    background: none;
+    border-bottom: 2px solid #F8A067;
+    padding-top: 10px;
+    font-size: 23px;
+    font-family: Poppins;
+    color:white
+}
+option{
+    width: 99.5%;
+    outline: none;
+    border: none;
+    background: none;
+    font-family: Poppins;
+    color: black;
+}
